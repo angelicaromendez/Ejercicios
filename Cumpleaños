@@ -1,0 +1,162 @@
+Algoritmo dias_cumple
+	
+	//definimos variables
+	definir da, ma, aa Como Entero
+	definir dc, mc, d, mcond Como Entero
+	definir enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, novibiembre, diciembre Como Entero
+	
+	//definimos valor a cada mes
+	enero <- 31
+	marzo <- 31
+	abril <- 30
+	mayo <- 31
+	junio <- 30
+	julio <- 31
+	agosto <- 31
+	septiembre <- 30
+	octubre <- 31
+	noviembre <- 30
+	diciembre <- 31
+	
+	//solicitamos datos al usuario
+	escribir "Ingrese el dia actual en formato: DD"
+	leer da
+	escribir "Ingrese el mes actual en formato: MM"
+	leer ma
+	escribir "Ingrese el año actual en formato: AAAA"
+	leer aa
+	escribir "Ingrese el dia de su cumpleaños en formato: DD"
+	leer dc
+	escribir "Ingrese el mes de su cumpleaños en formato: MM"
+	leer mc
+	
+	
+	
+	//validar si el dia de hoy es tu cumple
+	Si da = dc y ma = mc Entonces
+		escribir "Felicidades, Hoy es tu cumple"
+	SiNo
+		escribir "Hoy no es tu cumple"
+	//validar si los dias son iguales al dia menos el dia actual
+    d <- d - da
+	//validar si mes acual es menor al mes de cumple
+	si ma < mc Entonces
+		// abrimos ciclo para contar los dias que faltan para cumple segun el mes
+		Para mes <- ma Hasta mc - 1 Con Paso 1 Hacer
+			segun mes Hacer
+				1:
+					d <- d + enero
+				2:	
+					si aa % 4 == 0 Entonces
+						febrero <- 29
+					SiNo
+						febrero <- 28
+					FinSi
+					d <- d + febrero
+				3:
+					d <- d + marzo
+				4:
+					d <- d + abril
+				5:
+					d <- d + mayo
+				6: 
+					d <- d + junio
+				7: 
+					d <- d + julio
+				8:
+					d <- d + agosto
+				9: 
+					d <- d + septiembre
+				10: 
+					d <- d + octubre
+				11: 
+					d <- d + noviembre
+				12:
+					d <- d + diciembre
+					
+			FinSegun
+		Fin Para
+	// validar si los dias son iguales a los dias mas el dia de cumple
+		d <- d + dc
+	// validar si el mes es igual al de cumple y si el dia es menor se contabilizan solo los dias faltantes	
+	SiNo
+		si ma = mc y da < dc
+			d <- d + dc
+		SiNo
+			// agregar condicion donde el mes igual a 12, para contabilizar los dias
+			mcond <- 12
+			para mes <- ma hasta 12 con paso 1 Hacer
+				segun mes hacer
+					1:
+						d <- d + enero
+					2:	
+						si aa % 4 == 0 Entonces
+							febrero <- 29
+						SiNo
+							febrero <- 28
+						FinSi
+						d <- d + febrero
+					3:
+						d <- d + marzo
+					4:
+						d <- d + abril
+					5:
+						d <- d + mayo
+					6: 
+						d <- d + junio
+					7: 
+						d <- d + julio
+					8:
+						d <- d + agosto
+					9: 
+						d <- d + septiembre
+					10: 
+						d <- d + octubre
+					11: 
+						d <- d + noviembre
+					12:
+						d <- d + diciembre	
+				FinSegun
+			FinPara
+			//validar si el cumple ya paso y de ser asi, se hace la suma de los dias hasta el proximo cumple
+			aa <- aa + 1
+			para mes <- 1 hasta mc - 1 con paso 1 Hacer
+				segun mes hacer
+					1:
+						d <- d + enero
+					2:	
+						si aa % 4 == 0 Entonces
+							febrero <- 29
+						SiNo
+							febrero <- 28
+						FinSi
+						d <- d + febrero
+					3:
+						d <- d + marzo
+					4:
+						d <- d + abril
+					5:
+						d <- d + mayo
+					6: 
+						d <- d + junio
+					7: 
+						d <- d + julio
+					8:
+						d <- d + agosto
+					9: 
+						d <- d + septiembre
+					10: 
+						d <- d + octubre
+					11: 
+						d <- d + noviembre
+					12:
+						d <- d + diciembre
+				FinSegun
+			FinPara
+			d <- d + dc
+		FinSi
+	FinSi
+	Escribir (Concatenar(Concatenar("Faltan ",ConvertirATexto(d))," dias para tu cumpleaños"))
+Fin Si
+FinAlgoritmo
+
